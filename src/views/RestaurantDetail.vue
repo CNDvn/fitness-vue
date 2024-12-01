@@ -5,33 +5,45 @@ import IconCart from '@/components/icons/IconCart.vue'
 import { useCartStore } from '@/stores/cart'
 import { useRestaurant } from '@/stores/restaurant'
 import { formatCurrencyVN } from '@/utils/format-currency'
-import { computed, ref } from 'vue'
+import { onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
 
 const route = useRoute()
-const id = route.params.id
+const restaurantId = route.params.id
 
 const restaurantStore = useRestaurant()
-restaurantStore.setRestaurant(Number(id))
+restaurantStore.setRestaurant(Number(restaurantId))
 
 const cartStore = useCartStore()
 
+onMounted(() => {
+  if (
+    cartStore.cartItems.length > 0 &&
+    cartStore.cartItems[0].restaurantId !== Number(restaurantId)
+  ) {
+    cartStore.clearCart()
+  }
+})
+
 const getItemQuantity = (id: number) => {
-  const item = cartStore.cartItems.find((i) => i.id === id && i.restaurantId === id)
+  const item = cartStore.cartItems.find(
+    (i) => i.id === id && i.restaurantId === Number(restaurantId),
+  )
   if (!item) return '+'
+
   return item.quantity
 }
 
 const activeFood = ref<{
-  id: Number
-  name: String
-  calo: Number
-  pro: Number
-  carb: Number
-  fat: Number
-  detail: String
-  price: Number
-  img: String
+  id: number
+  name: string
+  calo: number
+  pro: number
+  carb: number
+  fat: number
+  detail: string
+  price: number
+  img: string
 } | null>(null)
 
 const openCartDetail = ref(false)
@@ -140,10 +152,14 @@ const openCartDetail = ref(false)
               <!-- decrement -->
               <button
                 class="bg-blue-500 text-white rounded-full w-8 h-8 flex items-center justify-center"
-                v-on:click="
-                  cartStore.removeQuantityItem(food.id, restaurantStore.restaurantInfo?.id)
+                v-on:click="cartStore.removeQuantityItem(food.id, Number(restaurantId))"
+                v-if="
+                  Boolean(
+                    cartStore.cartItems.find(
+                      (i) => i.id === food.id && i.restaurantId === Number(restaurantId),
+                    ),
+                  )
                 "
-                v-if="Boolean(cartStore.cartItems.find((i) => i.id === food.id))"
               >
                 -
               </button>
@@ -152,7 +168,7 @@ const openCartDetail = ref(false)
                 class="bg-blue-500 text-white rounded-full w-8 h-8 flex items-center justify-center"
                 v-on:click="
                   cartStore.addItem({
-                    restaurantId: restaurantStore.restaurantInfo?.id,
+                    restaurantId: restaurantStore.restaurantInfo!.id,
                     id: food.id,
                     image: food.img,
                     name: food.name,

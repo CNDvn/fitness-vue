@@ -5,7 +5,7 @@ export const useCartStore = defineStore('cartStore', () => {
   const cartItems = ref<
     {
       id: number
-      restaurantId?: number
+      restaurantId: number
       name: string
       price: number
       quantity: number
@@ -13,14 +13,12 @@ export const useCartStore = defineStore('cartStore', () => {
     }[]
   >([])
 
-  function removeItem(id: number, restaurantId?: number) {
-    cartItems.value = cartItems.value.filter(
-      (item) => item.id !== id && item.restaurantId === restaurantId,
-    )
+  function removeItem(id: number) {
+    cartItems.value = cartItems.value.filter((item) => item.id !== id)
   }
 
-  function removeQuantityItem(id: number, restaurantId?: number) {
-    const item = cartItems.value.find((i) => i.id === id && item?.restaurantId === restaurantId)
+  function removeQuantityItem(id: number, restaurantId: number) {
+    const item = cartItems.value.find((i) => i.id === id && i.restaurantId === restaurantId)
 
     if (item && item.quantity > 1) {
       item.quantity -= 1
@@ -35,13 +33,15 @@ export const useCartStore = defineStore('cartStore', () => {
 
   function addItem(item: {
     id: number
-    restaurantId?: number
+    restaurantId: number
     name: string
     price: number
     quantity: number
     image: string
   }) {
-    const index = cartItems.value.findIndex((i) => i.id === item.id)
+    const index = cartItems.value.findIndex(
+      (i) => i.id === item.id && i.restaurantId === item.restaurantId,
+    )
     if (index === -1) {
       cartItems.value = [...cartItems.value, item]
     } else {

@@ -86,11 +86,13 @@ const getItemQuantity = (id: number) => {
           {{ detail }}
         </p>
         <div class="flex justify-between items-center">
-          <p class="text-lg font-bold text-blue-500">{{ formatCurrencyVN.format(price) }}</p>
+          <p class="text-lg font-bold text-blue-500">
+            {{ formatCurrencyVN.format(Number(price)) }}
+          </p>
           <div class="flex">
             <button
               class="bg-blue-500 text-white rounded-full w-8 h-8 flex items-center justify-center mx-2"
-              v-on:click="cartStore.removeQuantityItem(Number(id))"
+              v-on:click="cartStore.removeQuantityItem(Number(id), Number(restaurantId))"
             >
               -
             </button>
@@ -100,11 +102,11 @@ const getItemQuantity = (id: number) => {
               class="bg-blue-500 text-white rounded-full w-8 h-8 flex items-center justify-center"
               v-on:click="
                 cartStore.addItem({
-                  restaurantId: restaurantId,
-                  id: id,
-                  image: img,
-                  name: name,
-                  price: price,
+                  restaurantId: Number(restaurantId),
+                  id: Number(id),
+                  image: String(img),
+                  name: String(name),
+                  price: Number(price),
                   quantity: 1,
                 })
               "
