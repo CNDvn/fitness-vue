@@ -18,51 +18,61 @@ watch(route, () => {
 })
 
 // style
-const containerCss = ref('container')
+const containerCss = ref('container-nav')
 const routerCss = ref('router')
 const routeActiveCss = ref('route_active')
 </script>
 
 <template>
-  <nav :class="containerCss">
-    <RouterLink :class="currentRoute === '/' ? routeActiveCss : routerCss" to="/">
-      <IconHome class="icon" />
-      <div>{{ i18n[languageStore.currentLanguage].home }}</div>
-    </RouterLink>
+  <div :class="containerCss">
+    <nav
+      style="
+        height: 60px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        background-color: #545454;
+        color: aliceblue;
+        padding: 5px;
+        width: 430px;
+        position: fixed;
+        bottom: 0;
+      "
+    >
+      <RouterLink :class="currentRoute === '/' ? routeActiveCss : routerCss" to="/">
+        <IconHome class="icon" />
+        <div>{{ i18n[languageStore.currentLanguage].home }}</div>
+      </RouterLink>
 
-    <RouterLink :class="currentRoute === '/diary' ? routeActiveCss : routerCss" to="/diary">
-      <IconDiary class="icon" />
-      <div>{{ i18n[languageStore.currentLanguage].diary }}</div>
-    </RouterLink>
+      <RouterLink :class="currentRoute === '/diary' ? routeActiveCss : routerCss" to="/diary">
+        <IconDiary class="icon" />
+        <div>{{ i18n[languageStore.currentLanguage].diary }}</div>
+      </RouterLink>
 
-    <RouterLink :class="currentRoute === '/workout' ? routeActiveCss : routerCss" to="/workout">
-      <IconWorkout class="icon" />
-      <div>{{ i18n[languageStore.currentLanguage].workout }}</div>
-    </RouterLink>
+      <RouterLink :class="currentRoute === '/workout' ? routeActiveCss : routerCss" to="/workout">
+        <IconWorkout class="icon" />
+        <div>{{ i18n[languageStore.currentLanguage].workout }}</div>
+      </RouterLink>
 
-    <RouterLink :class="currentRoute === '/meal' ? routeActiveCss : routerCss" to="/meal">
-      <IconFood class="icon" />
-      <div>{{ i18n[languageStore.currentLanguage].meal }}</div>
-    </RouterLink>
+      <RouterLink :class="currentRoute === '/meal' ? routeActiveCss : routerCss" to="/meal">
+        <IconFood class="icon" />
+        <div>{{ i18n[languageStore.currentLanguage].meal }}</div>
+      </RouterLink>
 
-    <RouterLink :class="currentRoute === '/me' ? routeActiveCss : routerCss" to="/me">
-      <IconMe class="icon" />
-      <div>{{ i18n[languageStore.currentLanguage].me }}</div>
-    </RouterLink>
-  </nav>
+      <RouterLink :class="currentRoute === '/me' ? routeActiveCss : routerCss" to="/me">
+        <IconMe class="icon" />
+        <div>{{ i18n[languageStore.currentLanguage].me }}</div>
+      </RouterLink>
+    </nav>
+  </div>
 </template>
 
 <style scoped>
-.container {
+.container-nav {
+  width: 100%;
   height: 60px;
   display: flex;
-  justify-content: space-around;
-  align-items: center;
-  background-color: #545454;
-  color: aliceblue;
-  padding: 5px;
-  position: fixed;
-  bottom: 0;
+  justify-content: center;
 }
 
 .router {

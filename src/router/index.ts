@@ -6,6 +6,7 @@ import MealView from '../views/MealView.vue'
 import MeView from '../views/MeView.vue'
 import SignInView from '@/views/SignInView.vue'
 import SignUpView from '@/views/SignUpView.vue'
+import RestaurantDetail from '@/views/RestaurantDetail.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -17,12 +18,12 @@ const router = createRouter({
     },
     {
       path: '/sign-in',
-      name: 'sign in',
+      name: 'sign-in',
       component: SignInView,
     },
     {
       path: '/sign-up',
-      name: 'sign up',
+      name: 'sign-up',
       component: SignUpView,
     },
     {
@@ -49,6 +50,11 @@ const router = createRouter({
       path: '/me',
       name: 'me',
       component: MeView,
+    },
+    {
+      path: '/restaurants/:id',
+      name: 'restaurant-detail',
+      component: RestaurantDetail,
     },
   ],
 })

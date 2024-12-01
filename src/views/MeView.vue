@@ -20,7 +20,6 @@ const info = {
 
 //style
 const containerCss = ref('container')
-const avatarCss = ref('avatar')
 const infoContainerCss = ref('info_container')
 const infoCss = ref('info')
 const progressContainerCss = ref('progress_container')
@@ -28,7 +27,7 @@ const optionContainerCss = ref('option_container')
 </script>
 
 <template>
-  <main :class="containerCss">
+  <div :class="containerCss">
     <h1 style="font-size: 20px">{{ i18n[languageStore.currentLanguage].profile }}</h1>
     <div :class="infoContainerCss">
       <ProgressCycle progress="80,100" width="w-20" height="h-20" img="/images/avatar.png" />
@@ -127,20 +126,15 @@ const optionContainerCss = ref('option_container')
         <a href="">{{ i18n[languageStore.currentLanguage].edit }}</a>
       </div>
     </div>
-  </main>
+  </div>
 </template>
 
 <style scoped>
 .container {
+  width: 430px;
   height: 100vh;
   color: aliceblue;
   padding: 1rem;
-}
-
-.avatar {
-  height: 70px;
-  width: 70px;
-  border-radius: 50%;
 }
 
 .info_container {

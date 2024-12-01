@@ -20,89 +20,29 @@ const layer2Css = ref('layer2')
       <h2 class="font-bold text-lg">{{ i18n[languageStore.currentLanguage].upperBody }}</h2>
       <div :class="layer2Css">
         <div style="display: flex; justify-content: space-between">
-          <div
-            style="
-              height: 120px;
-              width: 100px;
-              background-color: #818181;
-              text-align: center;
-              border-radius: 10px;
-            "
-          >
+          <div style="background-color: #818181; text-align: center; border-radius: 10px">
             <h4 class="font-bold text-base">{{ i18n[languageStore.currentLanguage].shoulders }}</h4>
-            <img
-              src="/images/vai.png"
-              alt="vai"
-              style="height: 80%; width: 100%; object-fit: cover"
-            />
+            <img src="/images/vai.png" alt="vai" style="height: 80%; object-fit: cover" />
           </div>
-          <div
-            style="
-              height: 120px;
-              width: 100px;
-              background-color: #818181;
-              text-align: center;
-              border-radius: 10px;
-            "
-          >
+          <div style="background-color: #818181; text-align: center; border-radius: 10px">
             <h4 class="font-bold text-base">{{ i18n[languageStore.currentLanguage].triceps }}</h4>
-            <img
-              src="/images/tay-sau.png"
-              alt="vai"
-              style="height: 80%; width: 100%; object-fit: cover"
-            />
+            <img src="/images/tay-sau.png" alt="vai" style="height: 80%; object-fit: cover" />
           </div>
         </div>
         <div style="display: flex; justify-content: center">
-          <div
-            style="
-              height: 120px;
-              width: 100px;
-              background-color: #818181;
-              text-align: center;
-              border-radius: 10px;
-            "
-          >
+          <div style="background-color: #818181; text-align: center; border-radius: 10px">
             <h4 class="font-bold text-base">{{ i18n[languageStore.currentLanguage].abs }}</h4>
-            <img
-              src="/images/bung.png"
-              alt="vai"
-              style="height: 80%; width: 100%; object-fit: cover"
-            />
+            <img src="/images/bung.png" alt="vai" style="height: 80%; object-fit: cover" />
           </div>
         </div>
         <div style="display: flex; justify-content: space-between">
-          <div
-            style="
-              height: 120px;
-              width: 100px;
-              background-color: #818181;
-              text-align: center;
-              border-radius: 10px;
-            "
-          >
+          <div style="background-color: #818181; text-align: center; border-radius: 10px">
             <h4 class="font-bold text-base">{{ i18n[languageStore.currentLanguage].biceps }}</h4>
-            <img
-              src="/images/tay-truoc.png"
-              alt="vai"
-              style="height: 80%; width: 100%; object-fit: cover"
-            />
+            <img src="/images/tay-truoc.png" alt="vai" style="height: 80%; object-fit: cover" />
           </div>
-          <div
-            style="
-              height: 120px;
-              width: 100px;
-              background-color: #818181;
-              text-align: center;
-              border-radius: 10px;
-            "
-          >
+          <div style="background-color: #818181; text-align: center; border-radius: 10px">
             <h4 class="font-bold text-base">{{ i18n[languageStore.currentLanguage].back }}</h4>
-            <img
-              src="/images/lung.png"
-              alt="vai"
-              style="height: 80%; width: 100%; object-fit: cover"
-            />
+            <img src="/images/lung.png" alt="vai" style="height: 80%; object-fit: cover" />
           </div>
         </div>
       </div>
@@ -112,55 +52,19 @@ const layer2Css = ref('layer2')
       <h2 class="font-bold text-lg">{{ i18n[languageStore.currentLanguage].lowerBody }}</h2>
       <div :class="layer2Css">
         <div style="display: flex; justify-content: space-between">
-          <div
-            style="
-              height: 120px;
-              width: 100px;
-              background-color: #818181;
-              text-align: center;
-              border-radius: 10px;
-            "
-          >
+          <div style="background-color: #818181; text-align: center; border-radius: 10px">
             <h4 class="font-bold text-base">{{ i18n[languageStore.currentLanguage].calves }}</h4>
-            <img
-              src="/images/bap-chan.png"
-              alt="vai"
-              style="height: 80%; width: 100%; object-fit: cover"
-            />
+            <img src="/images/bap-chan.png" alt="vai" style="height: 80%; object-fit: cover" />
           </div>
-          <div
-            style="
-              height: 120px;
-              width: 100px;
-              background-color: #818181;
-              text-align: center;
-              border-radius: 10px;
-            "
-          >
+          <div style="background-color: #818181; text-align: center; border-radius: 10px">
             <h4 class="font-bold text-base">{{ i18n[languageStore.currentLanguage].thighs }}</h4>
-            <img
-              src="/images/dui.png"
-              alt="vai"
-              style="height: 80%; width: 100%; object-fit: cover"
-            />
+            <img src="/images/dui.png" alt="vai" style="height: 80%; object-fit: cover" />
           </div>
         </div>
         <div style="display: flex; justify-content: center">
-          <div
-            style="
-              height: 120px;
-              width: 100px;
-              background-color: #818181;
-              text-align: center;
-              border-radius: 10px;
-            "
-          >
+          <div style="background-color: #818181; text-align: center; border-radius: 10px">
             <h4 class="font-bold text-base">{{ i18n[languageStore.currentLanguage].glutes }}</h4>
-            <img
-              src="/images/mong.png"
-              alt="vai"
-              style="height: 80%; width: 100%; object-fit: cover"
-            />
+            <img src="/images/mong.png" alt="vai" style="height: 80%; object-fit: cover" />
           </div>
         </div>
       </div>
@@ -171,8 +75,10 @@ const layer2Css = ref('layer2')
 <style scoped>
 .container {
   height: 100vh;
+  width: 430px;
   color: aliceblue;
   padding: 5px;
+  overflow: auto;
 }
 
 .layer1 {
@@ -181,6 +87,7 @@ const layer2Css = ref('layer2')
   padding: 20px;
   border-radius: 20px;
 }
+
 .layer2 {
   background-color: aliceblue;
   padding: 10px;

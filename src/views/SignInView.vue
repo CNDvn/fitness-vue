@@ -6,6 +6,10 @@ import { i18n } from '@/i18n'
 import { useLanguageStore } from '@/stores/language'
 import { useUserInfoStore } from '@/stores/user'
 
+defineProps<{
+  changeIsLogin: () => void
+}>()
+
 const languageStore = useLanguageStore()
 const userStore = useUserInfoStore()
 
@@ -115,7 +119,7 @@ const submitForm = () => {
       <!-- Footer -->
       <p class="text-xs text-gray-500 text-center mt-4">
         {{ i18n[languageStore.currentLanguage].notHaveAccount }}?
-        <a href="#" class="text-blue-500 underline">{{
+        <a href="#" v-on:click="changeIsLogin" class="text-blue-500 underline">{{
           i18n[languageStore.currentLanguage].registerNow
         }}</a>
       </p>
