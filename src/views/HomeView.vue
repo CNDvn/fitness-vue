@@ -4,6 +4,7 @@ import Banner from '../components/Banner.vue'
 import IconMenu from '../components/icons/IconMenu.vue'
 import { ref } from 'vue'
 import Search from '../components/Search.vue'
+import IconLock from '@/components/icons/IconLock.vue'
 
 const listNews = [
   {
@@ -38,8 +39,9 @@ const listNews = [
   { id: 10, title: 'Bản tin 123', url: './images/news1.jpg', content: 'tét' },
 ]
 
+const openMenu = ref(false)
 const handleMenu = () => {
-  console.log('ok')
+  openMenu.value = !openMenu.value
 }
 
 //style
@@ -48,27 +50,48 @@ const menuTopCss = ref('menu_top')
 </script>
 
 <template>
-  <div
-    style="
+  <div style="
       display: flex;
       justify-content: space-between;
       padding: 10px 20px;
       color: aliceblue;
       align-items: center;
-    "
-  >
-    <Search style="width: 90%; height: 30px" />
+    ">
     <IconMenu :class="menuTopCss" :onclick="handleMenu" />
+    <div v-if="openMenu"
+      style="background-color: black; color: aliceblue; position: absolute; top: 45px; padding: 1rem;">
+      <ul>
+        <li>Nhật ký</li>
+        <li>Tập luyện</li>
+        <li>Thực đơn</li>
+        <li>Bữa ăn</li>
+        <li style="display: flex; justify-content: space-between;">
+          <p>Plan bài tập theo yêu cầu</p>
+          <IconLock class="icon" />
+        </li>
+        <li style="display: flex; justify-content: space-between;">
+
+          <p>Thực đơn theo yêu cầu</p>
+          <IconLock class="icon" />
+        </li>
+        <li style="display: flex; justify-content: space-between;">
+
+          <p>Tổng đài tư vấn</p>
+          <IconLock class="icon" />
+        </li>
+        <li style="display: flex; justify-content: space-between;">
+
+          <p>Nhóm chất cần bổ sung</p>
+          <IconLock class="icon" />
+        </li>
+        <li>Cài đặt</li>
+      </ul>
+    </div>
+    <Search style="width: 90%; height: 30px" />
   </div>
   <Banner />
   <div :class="containerCss">
-    <NewsCard
-      v-for="news in listNews"
-      :key="news.id"
-      :title="news.title"
-      :url="news.url"
-      :content="news.content"
-    />
+    <NewsCard v-for="news in listNews" :key="news.id" :title="news.title" :url="news.url" :content="news.content" />
   </div>
 </template>
 
