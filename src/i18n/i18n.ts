@@ -61,6 +61,7 @@ export const i18n = {
     edit: 'Chỉnh sửa',
     analysis: 'Phân tích',
     yearsOld: 'Tuổi',
+    name:"Tên của bạn"
   },
   en: {
     home: 'Home',
@@ -104,6 +105,7 @@ export const i18n = {
     signInSMS: 'Sign in by SMS',
     or: 'or',
     continueWith: 'Continue with',
+    name: 'Your name',
     notHaveAccount: 'No account',
     alreadyAccount: 'I have already account',
     registerNow: 'register',
