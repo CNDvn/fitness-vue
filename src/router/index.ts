@@ -7,6 +7,7 @@ import MeView from '../views/MeView.vue'
 import SignInView from '@/views/SignInView.vue'
 import SignUpView from '@/views/SignUpView.vue'
 import RestaurantDetail from '@/views/RestaurantDetail.vue'
+import UpgradeAccount from '@/views/UpgradeAccount.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -55,6 +56,11 @@ const router = createRouter({
       path: '/restaurants/:id',
       name: 'restaurant-detail',
       component: RestaurantDetail,
+    },
+    {
+      path: '/upgrade-account',
+      name: 'upgrade-account',
+      component: UpgradeAccount,
     },
   ],
 })

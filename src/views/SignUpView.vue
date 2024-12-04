@@ -18,7 +18,6 @@ const changeData =
   (e: any) => {
     payload.value[e.target.getAttribute("label") as "name" | "username" | "password" | "passwordAgain"] = e.target.value
     payload.value = { ...payload.value }
-    console.log(payload.value);
   }
 
 
@@ -83,7 +82,7 @@ const submitForm = async () => {
         </button>
         <a @click="changeIsLogin()" class="block text-center text-blue-500 text-sm mt-4">{{
           i18n[languageStore.currentLanguage].alreadyAccount
-        }}</a>
+          }}</a>
       </form>
 
       <!-- Divider -->
@@ -120,11 +119,11 @@ const submitForm = async () => {
         {{ i18n[languageStore.currentLanguage].acceptRegister }}
         <a href="#" class="text-blue-500 underline">{{
           i18n[languageStore.currentLanguage].termsOfService
-        }}</a>
+          }}</a>
         &
         <a href="#" class="text-blue-500 underline">{{
           i18n[languageStore.currentLanguage].privacyPolicy
-        }}</a>
+          }}</a>
         {{ i18n[languageStore.currentLanguage].ofFitFuel }}
       </p>
     </div>

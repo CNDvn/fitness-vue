@@ -5,6 +5,7 @@ import IconMenu from '../components/icons/IconMenu.vue'
 import { ref } from 'vue'
 import Search from '../components/Search.vue'
 import IconLock from '@/components/icons/IconLock.vue'
+import { RouterLink } from 'vue-router'
 
 const listNews = [
   {
@@ -61,30 +62,55 @@ const menuTopCss = ref('menu_top')
     <div v-if="openMenu"
       style="background-color: black; color: aliceblue; position: absolute; top: 45px; padding: 1rem;">
       <ul>
-        <li>Nhật ký</li>
-        <li>Tập luyện</li>
-        <li>Thực đơn</li>
-        <li>Bữa ăn</li>
-        <li style="display: flex; justify-content: space-between;">
-          <p>Plan bài tập theo yêu cầu</p>
-          <IconLock class="icon" />
+        <li class="mt-2">
+          <RouterLink to="/diary">
+            Nhật ký
+          </RouterLink>
         </li>
-        <li style="display: flex; justify-content: space-between;">
-
-          <p>Thực đơn theo yêu cầu</p>
-          <IconLock class="icon" />
+        <li class="mt-2">
+          <RouterLink to="/workout">
+            Tập luyện
+          </RouterLink>
         </li>
-        <li style="display: flex; justify-content: space-between;">
-
-          <p>Tổng đài tư vấn</p>
-          <IconLock class="icon" />
+        <li class="mt-2">
+          <RouterLink to="/#">
+            Thực đơn
+          </RouterLink>
         </li>
-        <li style="display: flex; justify-content: space-between;">
-
-          <p>Nhóm chất cần bổ sung</p>
-          <IconLock class="icon" />
+        <li class="mt-2">
+          <RouterLink to="/meal">
+            Bữa ăn
+          </RouterLink>
         </li>
-        <li>Cài đặt</li>
+        <li class="mt-2">
+          <RouterLink to="/upgrade-account" style="display: flex; justify-content: space-between; align-items: center;">
+            <p>Plan bài tập theo yêu cầu</p>
+            <IconLock style="height: 15px;" class="ml-2.5" />
+          </RouterLink>
+        </li>
+        <li class="mt-2">
+          <RouterLink to="/upgrade-account" style="display: flex; justify-content: space-between; align-items: center;">
+            <p>Thực đơn theo yêu cầu</p>
+            <IconLock style="height: 15px;" class="ml-2.5" />
+          </RouterLink>
+        </li>
+        <li class="mt-2">
+          <RouterLink to="/upgrade-account" style="display: flex; justify-content: space-between; align-items: center;">
+            <p>Tổng đài tư vấn</p>
+            <IconLock style="height: 15px;" class="ml-2.5" />
+          </RouterLink>
+        </li>
+        <li class="mt-2">
+          <RouterLink to="/upgrade-account" style="display: flex; justify-content: space-between; align-items: center;">
+            <p>Nhóm chất cần bổ sung</p>
+            <IconLock style="height: 15px;" class="ml-2.5" />
+          </RouterLink>
+        </li>
+        <li class="mt-2">
+          <RouterLink to="/#">
+            Cài đặt
+          </RouterLink>
+        </li>
       </ul>
     </div>
     <Search style="width: 90%; height: 30px" />

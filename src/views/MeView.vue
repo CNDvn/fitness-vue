@@ -5,12 +5,14 @@ import ProgressBar from '@/components/ProgressBar.vue'
 import ProgressCycle from '@/components/ProgressCycle.vue'
 import { i18n } from '@/i18n'
 import { useLanguageStore } from '@/stores/language'
+import { useUserInfoStore } from '@/stores/user'
 import { ref } from 'vue'
 
 const languageStore = useLanguageStore()
+const userStore = useUserInfoStore()
 
 const info = {
-  name: 'Ly Swng',
+  name: userStore.user?.name,
   age: 20,
   currentFat: 27,
   currentMuscle: 28,
@@ -51,14 +53,12 @@ const optionContainerCss = ref('option_container')
         <div style="margin: 0.3rem 0">
           <p>Standard (with meat)</p>
         </div>
-        <div
-          style="
+        <div style="
             display: flex;
             justify-content: space-around;
             align-items: center;
             align-content: center;
-          "
-        >
+          ">
           <div>
             <p>Cal left</p>
             <p class="font-bold">1.297</p>
@@ -89,8 +89,7 @@ const optionContainerCss = ref('option_container')
       </div>
       <div>
         <button
-          class="bg-blue-500 text-white font-semibold py-2 px-4 rounded-full hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50"
-        >
+          class="bg-blue-500 text-white font-semibold py-2 px-4 rounded-full hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50">
           Change goals?
         </button>
       </div>
@@ -102,16 +101,12 @@ const optionContainerCss = ref('option_container')
     </div>
     <div :class="optionContainerCss">
       <div>
-        <a href=""
-          >{{ i18n[languageStore.currentLanguage].nutrition }}:
-          {{ i18n[languageStore.currentLanguage].highProtein }}</a
-        >
+        <a href="">{{ i18n[languageStore.currentLanguage].nutrition }}:
+          {{ i18n[languageStore.currentLanguage].highProtein }}</a>
       </div>
       <div>
-        <a href=""
-          >{{ i18n[languageStore.currentLanguage].goal }}:
-          {{ i18n[languageStore.currentLanguage].loseWeight }}</a
-        >
+        <a href="">{{ i18n[languageStore.currentLanguage].goal }}:
+          {{ i18n[languageStore.currentLanguage].loseWeight }}</a>
       </div>
       <div>
         <a href="">{{ i18n[languageStore.currentLanguage].weight }}: 52,0 kg</a>

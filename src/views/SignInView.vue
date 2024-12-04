@@ -20,7 +20,6 @@ const changeData =
   (e: any) => {
     payload.value[e.target.getAttribute("label") as "username" | "password"] = e.target.value
     payload.value = { ...payload.value }
-    console.log(payload.value);
   }
 
 const submitForm = () => {
@@ -77,7 +76,7 @@ const submitForm = () => {
         <!-- SMS Login -->
         <a href="#" class="block text-center text-blue-500 text-sm mb-4">{{
           i18n[languageStore.currentLanguage].signInSMS
-          }}</a>
+        }}</a>
       </form>
 
       <!-- Divider -->
@@ -114,7 +113,7 @@ const submitForm = () => {
         {{ i18n[languageStore.currentLanguage].notHaveAccount }}?
         <a href="#" v-on:click="changeIsLogin" class="text-blue-500 underline">{{
           i18n[languageStore.currentLanguage].registerNow
-          }}</a>
+        }}</a>
       </p>
     </div>
   </div>
