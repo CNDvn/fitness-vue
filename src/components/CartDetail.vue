@@ -1,14 +1,32 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue'
-import IconClose from './icons/IconClose.vue'
-import { useCartStore } from '@/stores/cart'
+import { useCartStore } from '@/stores/cart';
+import { useDeliveryStore } from '@/stores/delevery';
+import { useRestaurant } from '@/stores/restaurant';
+import { computed, ref } from 'vue';
+import IconClose from './icons/IconClose.vue';
+import router from '@/router';
 
 const cartStore = useCartStore()
+const restaurantStore = useRestaurant()
 const totalPrice = computed(() =>
   cartStore.cartItems.reduce((total, item) => total + item.price * item.quantity, 0),
 )
 
 const emitClose = defineEmits(['close'])
+
+const methodPay = ref("cash")
+const r = router
+const deliveryStore = useDeliveryStore()
+const order = () => {
+  const restaurant = restaurantStore.getRestaurant(cartStore.cartItems[0].restaurantId)
+  const orderId = deliveryStore.createDelivery({
+    totalPrice: totalPrice.value,
+    deliveryAddress: "37 Nam Kỳ Khởi Nghĩa, phường Nguyễn Thái Bình, quận 1, TP. HCM",
+    methodPay: methodPay.value,
+    restaurantName: restaurant.name
+  })
+  r.push(`/delivery/${orderId}`)
+}
 </script>
 
 <template>
@@ -51,7 +69,7 @@ const emitClose = defineEmits(['close'])
           <p class="font-bold text-blue-500">{{ totalPrice }}₫</p>
         </div>
 
-        <button
+        <button v-on:click="order"
           class="flex items-center justify-center bg-blue-500 text-white font-semibold px-2 py-2 rounded-lg shadow-md hover:bg-blue-600 focus:ring-2 focus:ring-blue-400 focus:outline-none transition mt-3">
           <span class="mr-2">Thanh toán</span>
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"

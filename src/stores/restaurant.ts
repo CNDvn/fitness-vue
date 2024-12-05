@@ -196,6 +196,10 @@ export const useRestaurant = defineStore('restaurantStore', () => {
     restaurantInfo.value = data[id - 1]
   }
 
+  function getRestaurant(id: number) {
+    return data[id - 1]
+  }
+
   function searchFood(search: string) {
     return data.filter((i) => {
       let result = false
@@ -212,5 +216,5 @@ export const useRestaurant = defineStore('restaurantStore', () => {
     })
   }
 
-  return { restaurantInfo, setRestaurant, searchFood }
+  return { restaurantInfo, setRestaurant, searchFood, getRestaurant }
 })
