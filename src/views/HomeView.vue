@@ -63,22 +63,22 @@ const menuTopCss = ref('menu_top')
       style="background-color: black; color: aliceblue; position: absolute; top: 45px; padding: 1rem;">
       <ul>
         <li class="mt-2">
-          <RouterLink to="/diary">
+          <RouterLink to="/diary" style="display: inline-block; width: 100%;">
             Nhật ký
           </RouterLink>
         </li>
         <li class="mt-2">
-          <RouterLink to="/workout">
+          <RouterLink to="/workout" style="display: inline-block; width: 100%;">
             Tập luyện
           </RouterLink>
         </li>
         <li class="mt-2">
-          <RouterLink to="/#">
+          <RouterLink to="/#" style="display: inline-block; width: 100%;">
             Thực đơn
           </RouterLink>
         </li>
         <li class="mt-2">
-          <RouterLink to="/meal">
+          <RouterLink to="/meal" style="display: inline-block; width: 100%;">
             Bữa ăn
           </RouterLink>
         </li>
@@ -107,7 +107,7 @@ const menuTopCss = ref('menu_top')
           </RouterLink>
         </li>
         <li class="mt-2">
-          <RouterLink to="/#">
+          <RouterLink to="/#" style="display: inline-block; width: 100%;">
             Cài đặt
           </RouterLink>
         </li>

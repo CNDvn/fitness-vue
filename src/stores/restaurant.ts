@@ -196,5 +196,21 @@ export const useRestaurant = defineStore('restaurantStore', () => {
     restaurantInfo.value = data[id - 1]
   }
 
-  return { restaurantInfo, setRestaurant }
+  function searchFood(search: string) {
+    return data.filter((i) => {
+      let result = false
+
+      const regex = new RegExp(search.toLowerCase())
+      i.foods.forEach((f) => {
+        const isMatch = f.name.toLowerCase().match(regex)
+        if (isMatch !== null) {
+          result = true
+        }
+      })
+
+      return result
+    })
+  }
+
+  return { restaurantInfo, setRestaurant, searchFood }
 })

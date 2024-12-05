@@ -4,6 +4,8 @@ import IconRightArrow from '@/components/icons/IconRightArrow.vue'
 import IconSearch from '@/components/icons/IconSearch.vue'
 import { i18n } from '@/i18n'
 import { useLanguageStore } from '@/stores/language'
+import { useRestaurant } from '@/stores/restaurant'
+import { computed, ref } from 'vue'
 import { RouterLink } from 'vue-router'
 const languageStore = useLanguageStore()
 
@@ -14,6 +16,7 @@ const categories = [
   { id: 4, name: 'Hải sản', image: '/images/hai-san.jpg' },
   { id: 5, name: 'Đồ uống', image: '/images/do-uong.jpg' },
 ]
+
 const foods = [
   { id: 1, name: 'Cơm gạo lứt cá hồi', image: '/images/com.jpg' },
   { id: 2, name: 'Salad gà nướng mật ong', image: '/images/salad.jpg' },
@@ -22,7 +25,8 @@ const foods = [
   { id: 2, name: 'Salad gà nướng mật ong', image: '/images/salad.jpg' },
   { id: 3, name: 'Nước ép táo', image: '/images/do-uong.jpg' },
 ]
-const restaurants = [
+
+const restaurants = ref([
   {
     id: 1,
     name: 'Nhà hàng KnMeal - Healthy & Eatclean (Thực phẩm sức khoẻ)',
@@ -50,7 +54,14 @@ const restaurants = [
     wasOrdered: true,
     distance: null,
   },
-]
+])
+
+const restaurantStore = useRestaurant()
+const searchByFood = (searchValue: any) => {
+  if (searchValue.target.value.trim() === "") { return }
+  restaurants.value = restaurantStore.searchFood(searchValue.target.value)
+}
+
 </script>
 
 <template>
@@ -61,38 +72,23 @@ const restaurants = [
 
   <div>
     <div style="display: flex; justify-content: center; padding: 10px 0">
-      <div
-        class="flex items-center bg-teal-800 rounded-full px-4 py-2 w-11/12"
-        style="background-color: aliceblue"
-      >
+      <div class="flex items-center bg-teal-800 rounded-full px-4 py-2 w-11/12" style="background-color: aliceblue">
         <IconSearch class="icon" />
-        <input
-          type="text"
-          :placeholder="i18n[languageStore.currentLanguage].search"
+        <input type="text" :placeholder="i18n[languageStore.currentLanguage].search" v-on:change="searchByFood"
           class="bg-transparent focus:outline-none text-back placeholder-gray-300 ml-3 w-full"
-          style="background-color: aliceblue"
-        />
+          style="background-color: aliceblue" />
       </div>
     </div>
-    <div
-      style="
+    <div style="
         color: aliceblue;
         display: flex;
         justify-content: space-around;
         overflow: auto;
         padding: 10px;
-      "
-    >
-      <div
-        v-for="category in categories"
-        :key="category.id"
-        style="display: flex; flex-direction: column; align-items: center; margin: 0 0.5rem"
-      >
-        <img
-          :src="category.image"
-          :alt="category.name"
-          style="height: 70%; width: 70%; border-radius: 50%"
-        />
+      ">
+      <div v-for="category in categories" :key="category.id"
+        style="display: flex; flex-direction: column; align-items: center; margin: 0 0.5rem">
+        <img :src="category.image" :alt="category.name" style="height: 70%; width: 70%; border-radius: 50%" />
         <div style="width: 4rem; text-align: center">
           <p class="text-base">{{ category.name }}</p>
         </div>
@@ -104,62 +100,47 @@ const restaurants = [
     <div style="display: flex; justify-content: space-between">
       <div style="display: flex; color: aliceblue; align-items: center">
         <p class="font-bold">flash Sale</p>
-        <div
-          style="
+        <div style="
             margin-left: 0.5rem;
             background-color: #7bb7e0;
             text-align: center;
             padding: 5px;
             border-radius: 0.5rem;
-          "
-        >
+          ">
           16
         </div>
         :
-        <div
-          style="background-color: #7bb7e0; text-align: center; padding: 5px; border-radius: 0.5rem"
-        >
+        <div style="background-color: #7bb7e0; text-align: center; padding: 5px; border-radius: 0.5rem">
           11
         </div>
         :
-        <div
-          style="background-color: #7bb7e0; text-align: center; padding: 5px; border-radius: 0.5rem"
-        >
+        <div style="background-color: #7bb7e0; text-align: center; padding: 5px; border-radius: 0.5rem">
           04
         </div>
       </div>
       <div style="color: aliceblue">
-        <a href="#"> Tất cả <IconRightArrow class="icon" style="color: #7bb7e0" /> </a>
+        <a href="#"> Tất cả
+          <IconRightArrow class="icon" style="color: #7bb7e0" />
+        </a>
       </div>
     </div>
-    <div
-      style="
+    <div style="
         color: aliceblue;
         display: flex;
         justify-content: space-around;
         overflow-x: scroll;
         overflow-y: hidden;
         height: 150px;
-      "
-    >
-      <div
-        v-for="food in foods"
-        :key="food.id"
-        style="
+      ">
+      <div v-for="food in foods" :key="food.id" style="
           margin: 0 0.5rem;
           display: flex;
           flex-direction: column;
           align-items: center;
           align-content: center;
-        "
-      >
-        <img
-          :src="food.image"
-          :alt="food.name"
-          style="width: 100px; aspect-ratio: 1 / 1; border-radius: 0.5rem"
-        />
-        <div
-          style="
+        ">
+        <img :src="food.image" :alt="food.name" style="width: 100px; aspect-ratio: 1 / 1; border-radius: 0.5rem" />
+        <div style="
             text-align: left;
             width: 7rem;
             display: -webkit-box;
@@ -167,8 +148,7 @@ const restaurants = [
             -webkit-box-orient: vertical;
             overflow: hidden;
             text-overflow: ellipsis;
-          "
-        >
+          ">
           <p>{{ food.name }}</p>
         </div>
       </div>
@@ -176,40 +156,29 @@ const restaurants = [
     <div style="color: aliceblue; margin: 0.5rem 0">
       <h3 class="font-bold text-xl">Nhà hàng</h3>
       <div>
-        <RouterLink
-          v-for="restaurant in restaurants"
-          :key="restaurant.id"
-          :to="{ name: 'restaurant-detail', params: { id: restaurant.id } }"
-        >
+        <RouterLink v-for="restaurant in restaurants" :key="restaurant.id"
+          :to="{ name: 'restaurant-detail', params: { id: restaurant.id } }">
           <div style="display: flex; margin: 1rem 0; align-items: center">
-            <img
-              :src="restaurant.logo"
-              :alt="restaurant.name"
-              style="width: 30%; border-radius: 50%"
-            />
+            <img :src="restaurant.logo" :alt="restaurant.name" style="width: 30%; border-radius: 50%" />
             <div style="margin: 1rem">
-              <div
-                style="
+              <div style="
                   text-align: left;
                   display: -webkit-box;
                   -webkit-line-clamp: 2;
                   -webkit-box-orient: vertical;
                   overflow: hidden;
                   text-overflow: ellipsis;
-                "
-              >
+                ">
                 <p class="font-bold">{{ restaurant.name }}</p>
               </div>
-              <div
-                style="
+              <div style="
                   text-align: left;
                   display: -webkit-box;
                   -webkit-line-clamp: 2;
                   -webkit-box-orient: vertical;
                   overflow: hidden;
                   text-overflow: ellipsis;
-                "
-              >
+                ">
                 <p>
                   {{ restaurant.rate }} ·
                   {{ restaurant.wasOrdered ? 'Đã từng đặt' : 'Chưa từng đặt' }}
