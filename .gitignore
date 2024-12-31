@@ -28,3 +28,4 @@ coverage
 *.sw?
 
 *.tsbuildinfo
+access-git.sh

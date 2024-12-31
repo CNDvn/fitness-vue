@@ -8,32 +8,32 @@ import IconLock from '@/components/icons/IconLock.vue'
 import { RouterLink } from 'vue-router'
 
 const listNews = [
+  { id: 1, title: 'Combo 3 tháng', url: './images/3-months.png', content: 'Đón tết đẹp, chúng tôi mang lại cho' },
+  { id: 2, title: 'Combo 1 tháng', url: './images/1-month.jpg', content: 'Đẹp không ngại khó, fitfuel cho bạn trải nghiệm' },
   {
-    id: 1,
+    id: 3,
     title: 'Eat clean không khó như bạn nghĩ?',
     url: './images/eat-clean.jpg',
     content: 'ear clean hiện nay không cho ăn thịt chó',
   },
   {
-    id: 2,
+    id: 4,
     title: 'Chế độ giảm cân 16:8 có thật sự là biện pháp an toàn',
     url: './images/che do.jpeg',
     content: 'Chế độ 16:8 là chế độ bạn thực sự cần thiết',
   },
   {
-    id: 3,
+    id: 5,
     title: 'Các bài tập vai trong hiệu quả',
     url: './images/shoulder.jpg',
     content: 'các bài tập vai hiệu quả bao gồm',
   },
   {
-    id: 4,
+    id: 6,
     title: 'Nữ giới, tập nặng có thật sự nguy hiểm',
     url: './images/girl-squat.jpg',
     content: 'Nữ giới tập nặng sẽ cần chích roi',
   },
-  { id: 5, title: 'Hot search', url: './images/news1.jpg', content: 'tét' },
-  { id: 6, title: 'Bản tin 123', url: './images/news1.jpg', content: 'tét' },
   { id: 7, title: 'Hot search', url: './images/news1.jpg', content: 'tét' },
   { id: 8, title: 'Bản tin 123', url: './images/news1.jpg', content: 'tét' },
   { id: 9, title: 'Hot search', url: './images/news1.jpg', content: 'tét' },
