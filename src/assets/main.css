@@ -21,8 +21,11 @@ div::-webkit-scrollbar {
 div::-webkit-scrollbar-thumb {
   background-color: gray; /* Màu của phần kéo */
   border-radius: 4px; /* Góc bo tròn */
+  display: none;
 }
 
 div::-webkit-scrollbar-track {
   background-color: #f1f1f1; /* Màu nền của thanh cuộn */
+  display: none;
+
 }

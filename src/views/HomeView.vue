@@ -33,11 +33,7 @@ const listNews = [
     title: 'Nữ giới, tập nặng có thật sự nguy hiểm',
     url: './images/girl-squat.jpg',
     content: 'Nữ giới tập nặng sẽ cần chích roi',
-  },
-  { id: 7, title: 'Hot search', url: './images/news1.jpg', content: 'tét' },
-  { id: 8, title: 'Bản tin 123', url: './images/news1.jpg', content: 'tét' },
-  { id: 9, title: 'Hot search', url: './images/news1.jpg', content: 'tét' },
-  { id: 10, title: 'Bản tin 123', url: './images/news1.jpg', content: 'tét' },
+  }
 ]
 
 const openMenu = ref(false)
