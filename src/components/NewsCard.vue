@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import router from '@/router'
 
 defineProps<{
   title: string
   url: string
   content: string
+  redirect?: string
 }>()
 
 // style
@@ -12,7 +14,16 @@ const itemCss = ref('item')
 </script>
 
 <template>
-  <div :class="itemCss">
+  <div
+    :class="itemCss"
+    @click="
+      () => {
+        if (redirect) {
+          router.push(redirect)
+        }
+      }
+    "
+  >
     <img
       :src="url"
       :alt="title"

@@ -8,13 +8,25 @@ import IconLock from '@/components/icons/IconLock.vue'
 import { RouterLink } from 'vue-router'
 
 const listNews = [
-  { id: 1, title: 'Combo 3 tháng', url: './images/3-months.png', content: 'Đón tết đẹp, chúng tôi mang lại cho' },
-  { id: 2, title: 'Combo 1 tháng', url: './images/1-month.jpg', content: 'Đẹp không ngại khó, fitfuel cho bạn trải nghiệm' },
+  {
+    id: 1,
+    title: 'Combo 3 tháng',
+    url: './images/3-months.png',
+    content: 'Đón tết đẹp, chúng tôi mang lại cho',
+    redirect: '/upgrade-account',
+  },
+  {
+    id: 2,
+    title: 'Combo 1 tháng',
+    url: './images/1-month.jpg',
+    content: 'Đẹp không ngại khó, fitfuel cho bạn trải nghiệm',
+    redirect: '/upgrade-account',
+  },
   {
     id: 3,
     title: 'Eat clean không khó như bạn nghĩ?',
     url: './images/eat-clean.jpg',
-    content: 'ear clean hiện nay không cho ăn thịt chó',
+    content: 'eat clean hiện nay không cho ăn thịt chó',
   },
   {
     id: 4,
@@ -33,7 +45,7 @@ const listNews = [
     title: 'Nữ giới, tập nặng có thật sự nguy hiểm',
     url: './images/girl-squat.jpg',
     content: 'Nữ giới tập nặng sẽ cần chích roi',
-  }
+  },
 ]
 
 const openMenu = ref(false)
@@ -47,65 +59,79 @@ const menuTopCss = ref('menu_top')
 </script>
 
 <template>
-  <div style="
+  <div
+    style="
       display: flex;
       justify-content: space-between;
       padding: 10px 20px;
       color: aliceblue;
       align-items: center;
-    ">
+    "
+  >
     <IconMenu :class="menuTopCss" :onclick="handleMenu" />
-    <div v-if="openMenu"
-      style="background-color: black; color: aliceblue; position: absolute; top: 45px; padding: 1rem;">
+    <div
+      v-if="openMenu"
+      style="
+        background-color: black;
+        color: aliceblue;
+        position: absolute;
+        top: 45px;
+        padding: 1rem;
+      "
+    >
       <ul>
         <li class="mt-2">
-          <RouterLink to="/diary" style="display: inline-block; width: 100%;">
-            Nhật ký
-          </RouterLink>
+          <RouterLink to="/diary" style="display: inline-block; width: 100%"> Nhật ký </RouterLink>
         </li>
         <li class="mt-2">
-          <RouterLink to="/workout" style="display: inline-block; width: 100%;">
+          <RouterLink to="/workout" style="display: inline-block; width: 100%">
             Tập luyện
           </RouterLink>
         </li>
         <li class="mt-2">
-          <RouterLink to="/#" style="display: inline-block; width: 100%;">
-            Thực đơn
-          </RouterLink>
+          <RouterLink to="/#" style="display: inline-block; width: 100%"> Thực đơn </RouterLink>
         </li>
         <li class="mt-2">
-          <RouterLink to="/meal" style="display: inline-block; width: 100%;">
-            Bữa ăn
-          </RouterLink>
+          <RouterLink to="/meal" style="display: inline-block; width: 100%"> Bữa ăn </RouterLink>
         </li>
         <li class="mt-2">
-          <RouterLink to="/upgrade-account" style="display: flex; justify-content: space-between; align-items: center;">
+          <RouterLink
+            to="/upgrade-account"
+            style="display: flex; justify-content: space-between; align-items: center"
+          >
             <p>Plan bài tập theo yêu cầu</p>
-            <IconLock style="height: 15px;" class="ml-2.5" />
+            <IconLock style="height: 15px" class="ml-2.5" />
           </RouterLink>
         </li>
         <li class="mt-2">
-          <RouterLink to="/upgrade-account" style="display: flex; justify-content: space-between; align-items: center;">
+          <RouterLink
+            to="/upgrade-account"
+            style="display: flex; justify-content: space-between; align-items: center"
+          >
             <p>Thực đơn theo yêu cầu</p>
-            <IconLock style="height: 15px;" class="ml-2.5" />
+            <IconLock style="height: 15px" class="ml-2.5" />
           </RouterLink>
         </li>
         <li class="mt-2">
-          <RouterLink to="/upgrade-account" style="display: flex; justify-content: space-between; align-items: center;">
+          <RouterLink
+            to="/upgrade-account"
+            style="display: flex; justify-content: space-between; align-items: center"
+          >
             <p>Tổng đài tư vấn</p>
-            <IconLock style="height: 15px;" class="ml-2.5" />
+            <IconLock style="height: 15px" class="ml-2.5" />
           </RouterLink>
         </li>
         <li class="mt-2">
-          <RouterLink to="/upgrade-account" style="display: flex; justify-content: space-between; align-items: center;">
+          <RouterLink
+            to="/upgrade-account"
+            style="display: flex; justify-content: space-between; align-items: center"
+          >
             <p>Nhóm chất cần bổ sung</p>
-            <IconLock style="height: 15px;" class="ml-2.5" />
+            <IconLock style="height: 15px" class="ml-2.5" />
           </RouterLink>
         </li>
         <li class="mt-2">
-          <RouterLink to="/#" style="display: inline-block; width: 100%;">
-            Cài đặt
-          </RouterLink>
+          <RouterLink to="/#" style="display: inline-block; width: 100%"> Cài đặt </RouterLink>
         </li>
       </ul>
     </div>
@@ -113,7 +139,14 @@ const menuTopCss = ref('menu_top')
   </div>
   <Banner />
   <div :class="containerCss">
-    <NewsCard v-for="news in listNews" :key="news.id" :title="news.title" :url="news.url" :content="news.content" />
+    <NewsCard
+      v-for="news in listNews"
+      :key="news.id"
+      :title="news.title"
+      :url="news.url"
+      :content="news.content"
+      :redirect="news.redirect"
+    />
   </div>
 </template>
 
