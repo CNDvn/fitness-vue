@@ -27,6 +27,7 @@ const listNews = [
     title: 'Eat clean không khó như bạn nghĩ?',
     url: './images/eat-clean.jpg',
     content: 'eat clean hiện nay không cho ăn thịt chó',
+    redirect: '/news/eat-clean-no-difficult',
   },
   {
     id: 4,

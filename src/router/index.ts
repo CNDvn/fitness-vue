@@ -9,6 +9,7 @@ import SignUpView from '@/views/SignUpView.vue'
 import RestaurantDetail from '@/views/RestaurantDetailView.vue'
 import UpgradeAccount from '@/views/UpgradeAccountView.vue'
 import DeliveryStatusView from '@/views/DeliveryStatusView.vue'
+import EatCleanNoDifficult from '@/news/EatCleanNoDifficult.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -67,6 +68,11 @@ const router = createRouter({
       path: '/delivery/:id',
       name: 'delivery',
       component: DeliveryStatusView,
+    },
+    {
+      path: '/news/eat-clean-no-difficult',
+      name: 'eat-clean-no-difficult',
+      component: EatCleanNoDifficult,
     },
   ],
 })
